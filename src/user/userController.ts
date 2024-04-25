@@ -6,6 +6,8 @@ import { sign } from "jsonwebtoken";
 import { config } from "../config/config";
 import { User } from "./userTypes";
 
+
+// ///////  REGISTER USER   ////////////////
 const createUser=async(req:Request,res:Response,next:NextFunction)=>{   
     const {name,email,password}=req.body
     // validation
