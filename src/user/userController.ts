@@ -14,8 +14,8 @@ const createUser=async(req:Request,res:Response,next:NextFunction)=>{
         return next(error)
     }
 
-    // Database call
 
+    // Database call
 try {
     const user=await userModel.findOne({email})
     if(user){
@@ -50,10 +50,15 @@ try {
         algorithm:"HS256",
     })
     // response
-   res.json({accessToken:token});
+
+   res.status(201).json({accessToken:token});
   }catch (err) {
     return next(createHttpError(500,"Error while signing the jwt token"));
 }
 }   
 
-export default createUser
+const loginUser=async(req:Request,res:Response,next:NextFunction)=>{
+    res.json({message:"OK"})
+}
+
+export  {createUser,loginUser}
